@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design Option B - Patient Journey</title>
+  <style>
+    :root{
+      --ink:#241f1d;
+      --muted:#6e625c;
+      --line:#ecd8cb;
+      --paper:#fffaf4;
+      --cream:#fff4e8;
+      --coral:#b75237;
+      --teal:#0b6f7a;
+      --sage:#e5efe8;
+      --navy:#00274c;
+      --maize:#ffcb05;
+      --shadow:0 18px 40px rgba(91,50,31,.09);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Avenir Next","Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,#fff8ef,#f6ebe0)}
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:0 auto;padding:22px 18px 44px}
+    .nav{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .mi{display:grid;place-items:center;width:48px;height:38px;border-radius:6px;background:var(--maize);color:var(--navy);font-size:22px;font-weight:900}
+    .brand strong{display:block;font-size:18px;color:var(--navy)}
+    .brand span{display:block;font-size:12px;color:var(--muted)}
+    .back{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 14px;text-decoration:none;font-weight:900;color:var(--coral)}
+    .hero{display:grid;grid-template-columns:1fr .7fr;gap:16px;align-items:stretch;margin-bottom:16px}
+    .hero-main{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:26px;box-shadow:var(--shadow)}
+    .kicker{margin:0 0 7px;color:var(--coral);font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:900}
+    h1{font-size:38px;line-height:1.08;margin:0;color:#2d2420;letter-spacing:0}
+    p{line-height:1.55;color:var(--muted)}
+    .hero-note{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px;box-shadow:var(--shadow)}
+    .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:16px}
+    .step{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px}
+    .num{display:grid;place-items:center;width:30px;height:30px;background:var(--sage);color:var(--teal);border-radius:999px;font-weight:900;margin-bottom:10px}
+    .step strong{display:block;color:#312925}
+    .step span{display:block;color:var(--muted);font-size:13px;margin-top:5px;line-height:1.4}
+    .work{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);padding:18px}
+    h2{margin:0 0 12px;font-size:22px;color:#2d2420}
+    label{display:block;color:#67544b;font-size:12px;font-weight:900;margin-bottom:5px}
+    input,textarea,select{width:100%;border:1px solid var(--line);border-radius:6px;background:#fffdfb;padding:10px;font:inherit;color:var(--ink)}
+    textarea{min-height:92px;resize:vertical}
+    .field{margin-bottom:12px}
+    .btns{display:flex;gap:8px;flex-wrap:wrap}
+    .btn{border:0;border-radius:6px;padding:11px 13px;font:inherit;font-weight:900;background:var(--coral);color:#fff}
+    .btn.secondary{background:var(--teal)}
+    .btn.light{background:#fff8f1;color:var(--coral);border:1px solid var(--line)}
+    .answer{background:#fff8f1;border:1px solid var(--line);border-radius:8px;padding:15px;margin-bottom:12px}
+    .answer strong{display:block;color:#2d2420;margin-bottom:5px}
+    .question-list{display:grid;gap:10px}
+    .question{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;background:#fbfff9;border:1px solid #d9eadf;border-radius:8px;padding:12px}
+    @media(max-width:880px){.hero,.work,.steps{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.back{width:100%;text-align:center}h1{font-size:32px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand"><span class="mi">Mi</span><div><strong>Patient Journey</strong><span>Option B</span></div></div>
+      <a class="back" href="./design-gallery.html">Design chooser</a>
+    </div>
+    <section class="hero">
+      <div class="hero-main">
+        <p class="kicker">Guided visit prep</p>
+        <h1>Move from confusion to better questions.</h1>
+        <p>This version makes the app feel like a calm path. It is less dashboard-heavy and more focused on what the patient should do next.</p>
+      </div>
+      <div class="hero-note">
+        <p class="kicker">Medical note</p>
+        <p>This concept keeps the safety language visible but friendlier. It would be strongest for patients and families using the app before a clinic visit.</p>
+      </div>
+    </section>
+    <section class="steps">
+      <div class="step"><span class="num">1</span><strong>Tell us the basics</strong><span>Diagnosis, stage, biomarkers, and treatment context.</span></div>
+      <div class="step"><span class="num">2</span><strong>Build the prompt</strong><span>Turn details into a safer AI question.</span></div>
+      <div class="step"><span class="num">3</span><strong>Check the answer</strong><span>Look for missing caveats and overconfidence.</span></div>
+      <div class="step"><span class="num">4</span><strong>Prepare the visit</strong><span>Bring focused questions to the care team.</span></div>
+    </section>
+    <section class="work">
+      <div class="panel">
+        <h2>Patient Details</h2>
+        <div class="field"><label>Disease site</label><select><option>Oropharynx</option><option>Oral cavity</option><option>Larynx</option></select></div>
+        <div class="field"><label>Stage</label><select><option>Stage III</option><option>Stage IVA</option></select></div>
+        <div class="field"><label>Goal</label><textarea>Understand side effects and what questions to ask before treatment starts.</textarea></div>
+        <div class="btns"><button class="btn">Generate prompt</button><button class="btn light">Copy summary</button></div>
+      </div>
+      <div class="panel">
+        <h2>Today’s Prep</h2>
+        <div class="answer"><strong>Safer AI prompt</strong><p>Explain the usual possibilities in careful language, and tell me what depends on diagnosis, stage, biomarkers, and treatment history.</p></div>
+        <div class="question-list">
+          <div class="question"><span class="num">1</span><span>What parts of this answer are true for my exact diagnosis?</span></div>
+          <div class="question"><span class="num">2</span><span>What side effects should I expect, and what symptoms are urgent?</span></div>
+          <div class="question"><span class="num">3</span><span>Are any trials or tissue banking studies worth discussing?</span></div>
+        </div>
+        <div class="btns" style="margin-top:12px"><button class="btn secondary">Copy visit notes</button><button class="btn light">Print prep</button></div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

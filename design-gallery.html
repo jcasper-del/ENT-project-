@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Navigator Design Options</title>
+  <style>
+    :root{
+      --ink:#172033;
+      --muted:#607086;
+      --line:#d9e1ea;
+      --paper:#ffffff;
+      --mist:#f5f7fa;
+      --navy:#00274c;
+      --maize:#ffcb05;
+      --green:#176b4d;
+      --teal:#0b6f7a;
+      --coral:#b75237;
+      --shadow:0 18px 45px rgba(17,31,49,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Avenir Next","Segoe UI",Helvetica,Arial,sans-serif;
+      color:var(--ink);
+      background:
+        linear-gradient(135deg, rgba(255,203,5,.14), transparent 26%),
+        linear-gradient(180deg, #fafcff, #eef3f7);
+    }
+    a{color:inherit}
+    .wrap{max-width:1180px;margin:0 auto;padding:28px 18px 46px}
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:22px;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .mark{
+      display:grid;
+      place-items:center;
+      width:48px;
+      height:38px;
+      background:var(--maize);
+      color:var(--navy);
+      border-radius:6px;
+      font-weight:900;
+      font-size:22px;
+    }
+    .brand strong{display:block;font-size:18px}
+    .brand span{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+    .back{
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--navy);
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:800;
+      text-decoration:none;
+      box-shadow:0 8px 20px rgba(20,36,56,.05);
+    }
+    .hero{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:20px;
+      align-items:stretch;
+      margin-bottom:18px;
+    }
+    .intro{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:8px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+    .intro p.kicker{
+      margin:0 0 10px;
+      color:var(--green);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-weight:900;
+    }
+    h1{margin:0;font-size:42px;line-height:1.04;letter-spacing:0;color:var(--navy)}
+    .intro p{color:var(--muted);line-height:1.6;font-size:16px;max-width:680px}
+    .note{
+      background:#fff7d8;
+      border:1px solid #ead17a;
+      border-radius:8px;
+      padding:16px;
+      line-height:1.55;
+      color:#765700;
+    }
+    .note strong{display:block;color:#5c4300;margin-bottom:6px}
+    .lab{
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:16px;
+      margin-bottom:18px;
+      align-items:start;
+    }
+    .lab-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:8px;
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+    .lab-card h2{margin:0 0 8px;color:var(--navy);font-size:22px}
+    .lab-card p{margin:0;color:var(--muted);line-height:1.55}
+    .tabs{display:grid;gap:8px;margin:14px 0}
+    .tab{
+      width:100%;
+      text-align:left;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--ink);
+      border-radius:6px;
+      padding:11px 12px;
+      font:inherit;
+      cursor:pointer;
+    }
+    .tab strong{display:block;color:var(--navy)}
+    .tab span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+    .tab.active{
+      border-color:var(--green);
+      background:#eff8f3;
+      box-shadow:0 0 0 3px rgba(23,107,77,.08);
+    }
+    .choice{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-top:12px;
+      padding:12px;
+      border-radius:6px;
+      background:#f7fbff;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.4;
+    }
+    .choice strong{color:var(--navy)}
+    .choice a{color:var(--green);font-weight:900;text-decoration:none;white-space:nowrap}
+    .lab-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .lab-btn{
+      border:0;
+      background:var(--navy);
+      color:#fff;
+      border-radius:6px;
+      padding:11px 12px;
+      font:inherit;
+      font-weight:900;
+      cursor:pointer;
+      flex:1 1 auto;
+    }
+    .lab-btn.secondary{
+      background:#fff;
+      color:var(--navy);
+      border:1px solid var(--line);
+    }
+    .notes-label{
+      display:block;
+      margin:14px 0 6px;
+      color:#40526a;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+    textarea{
+      width:100%;
+      min-height:112px;
+      border:1px solid var(--line);
+      border-radius:6px;
+      padding:11px 12px;
+      font:inherit;
+      color:var(--ink);
+      resize:vertical;
+      background:#fbfdff;
+    }
+    .viewer{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:8px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .viewer-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:12px 14px;
+      border-bottom:1px solid var(--line);
+      background:#fbfdff;
+    }
+    .viewer-head strong{color:var(--navy)}
+    .viewer-head a{font-size:13px;font-weight:900;color:var(--green);text-decoration:none}
+    iframe{
+      width:100%;
+      height:640px;
+      border:0;
+      display:block;
+      background:#fff;
+    }
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .option{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:8px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      min-height:520px;
+      transition:border-color .15s, transform .15s, box-shadow .15s;
+    }
+    .option.selected{
+      border-color:var(--green);
+      box-shadow:0 18px 48px rgba(23,107,77,.18);
+      transform:translateY(-2px);
+    }
+    .preview{height:210px;padding:14px;border-bottom:1px solid var(--line)}
+    .mock{
+      height:100%;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:6px;
+      overflow:hidden;
+      background:#fff;
+    }
+    .mock-a{display:grid;grid-template-columns:34% 66%;background:#f7fbfb}
+    .mock-a aside{background:#ffffff;border-right:1px solid #d8e8e4;padding:10px}
+    .mock-a main{padding:10px}
+    .chip{height:8px;border-radius:999px;background:#c8d7d2;margin-bottom:7px}
+    .chip.short{width:64%}
+    .tile{height:42px;border:1px solid #d8e8e4;border-radius:5px;background:#fff;margin-bottom:8px}
+    .mock-b{background:#fff9f3;padding:12px}
+    .journey{height:32px;border-radius:999px;background:#f6d7c9;margin-bottom:14px}
+    .wide{height:54px;border:1px solid #e7c8b8;border-radius:6px;background:#fff;margin-bottom:10px}
+    .mock-c{background:#f7f7f4;padding:10px}
+    .matrix{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+    .cell{height:34px;border:1px solid #d3d5ce;background:#fff;border-radius:4px}
+    .option-body{padding:18px;display:flex;flex-direction:column;gap:12px;flex:1}
+    .option h2{margin:0;color:var(--navy);font-size:22px}
+    .option p{margin:0;color:var(--muted);line-height:1.55}
+    .tagrow{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:6px 9px;color:#40526a;background:#fbfdff;font-weight:700}
+    .open{
+      margin-top:auto;
+      display:inline-flex;
+      justify-content:center;
+      text-decoration:none;
+      background:var(--navy);
+      color:#fff;
+      border-radius:6px;
+      padding:12px 14px;
+      font-weight:900;
+    }
+    .option-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+    .option-actions .open{margin-top:0}
+    .pick{
+      border:1px solid var(--line);
+      border-radius:6px;
+      padding:12px 14px;
+      background:#fff;
+      color:var(--navy);
+      font:inherit;
+      font-weight:900;
+      cursor:pointer;
+    }
+    .pick.saved{background:#eff8f3;border-color:var(--green);color:var(--green)}
+    .open.alt{background:var(--green)}
+    .open.coral{background:var(--coral)}
+    @media(max-width:900px){
+      .hero,.grid,.lab{grid-template-columns:1fr}
+      h1{font-size:34px}
+      .option{min-height:auto}
+      iframe{height:520px}
+    }
+    @media(max-width:560px){
+      .wrap{padding:18px 12px 34px}
+      .topbar{align-items:flex-start;flex-direction:column}
+      .back{width:100%;text-align:center}
+      .intro{padding:20px}
+      h1{font-size:30px}
+      .option-actions{grid-template-columns:1fr}
+      iframe{height:460px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <span class="mark">Mi</span>
+        <div>
+          <strong>Navigator Design Lab</strong>
+          <span>Three visual directions for the app</span>
+        </div>
+      </div>
+      <a class="back" href="./Michigan_HeadNeck_Navigator.html">Back to working app</a>
+    </div>
+
+    <section class="hero">
+      <div class="intro">
+        <p class="kicker">Choose the direction</p>
+        <h1>Pick the version that feels most right.</h1>
+        <p>These are design concept pages for the same app idea: patient profile, AI safety, doctor prep, and trial matching. Option C is now applied to the working app, and the others stay here for comparison.</p>
+      </div>
+      <div class="note">
+        <strong>Chosen direction: Option C.</strong>
+        The working app now uses the Trial Desk visual direction. We can still mix pieces from A or B later if something from those feels better.
+      </div>
+    </section>
+
+    <section class="lab" aria-label="Interactive design preview">
+      <div class="lab-card">
+        <h2>Live Preview</h2>
+        <p>Pick a design below and the working app will use that design. Your choice stays saved in this browser.</p>
+        <div class="tabs" role="tablist" aria-label="Design previews">
+          <button class="tab" type="button" data-option="clinical">
+            <strong>Option A</strong>
+            <span>Clinical Console</span>
+          </button>
+          <button class="tab" type="button" data-option="journey">
+            <strong>Option B</strong>
+            <span>Patient Journey</span>
+          </button>
+          <button class="tab active" type="button" data-option="trial">
+            <strong>Option C</strong>
+            <span>Trial Desk</span>
+          </button>
+        </div>
+        <div class="choice" id="choiceBox">
+          <span><strong>Current favorite:</strong> none yet</span>
+        </div>
+        <div class="lab-actions">
+          <button class="lab-btn" type="button" id="saveFavorite">Use this design in app</button>
+          <button class="lab-btn secondary" type="button" id="clearFavorite">Reset</button>
+        </div>
+        <label class="notes-label" for="designNotes">Design notes</label>
+        <textarea id="designNotes" placeholder="Example: I like B's calm flow, but C's trial table is useful."></textarea>
+      </div>
+      <div class="viewer">
+        <div class="viewer-head">
+          <strong id="previewTitle">Option C: Trial Desk</strong>
+          <a id="openFull" href="./design-option-trial-desk.html">Open full page</a>
+        </div>
+        <iframe id="previewFrame" title="Selected design preview" src="./design-option-trial-desk.html"></iframe>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Design options">
+      <article class="option" data-card="clinical">
+        <div class="preview">
+          <div class="mock mock-a">
+            <aside>
+              <div class="chip"></div>
+              <div class="chip short"></div>
+              <div class="tile"></div>
+              <div class="tile"></div>
+              <div class="tile"></div>
+            </aside>
+            <main>
+              <div class="chip"></div>
+              <div class="tile"></div>
+              <div class="tile"></div>
+              <div class="tile"></div>
+            </main>
+          </div>
+        </div>
+        <div class="option-body">
+          <h2>Option A: Clinical Console</h2>
+          <p>A clean two-column dashboard with the patient profile always visible. Best if you want it to feel like a professional clinical tool.</p>
+          <div class="tagrow">
+            <span class="tag">Structured</span>
+            <span class="tag">Fast scanning</span>
+            <span class="tag">Clinical</span>
+          </div>
+          <div class="option-actions">
+            <button class="pick" type="button" data-option="clinical">Use in app</button>
+            <a class="open alt" href="./design-option-clinical.html">Open full</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="option" data-card="journey">
+        <div class="preview">
+          <div class="mock mock-b">
+            <div class="journey"></div>
+            <div class="wide"></div>
+            <div class="wide"></div>
+            <div class="wide"></div>
+          </div>
+        </div>
+        <div class="option-body">
+          <h2>Option B: Patient Journey</h2>
+          <p>A warmer guided flow with clear steps from profile to questions to visit notes. Best if you want it to feel calmer and easier for patients.</p>
+          <div class="tagrow">
+            <span class="tag">Friendly</span>
+            <span class="tag">Step by step</span>
+            <span class="tag">Patient-first</span>
+          </div>
+          <div class="option-actions">
+            <button class="pick" type="button" data-option="journey">Use in app</button>
+            <a class="open coral" href="./design-option-journey.html">Open full</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="option selected" data-card="trial">
+        <div class="preview">
+          <div class="mock mock-c">
+            <div class="chip"></div>
+            <div class="matrix">
+              <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+              <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+              <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+            </div>
+          </div>
+        </div>
+        <div class="option-body">
+          <h2>Option C: Trial Desk</h2>
+          <p>A denser workspace built around matching, filters, and sortable results. Best if the trials and study workflow should be the star.</p>
+          <div class="tagrow">
+            <span class="tag">Dense</span>
+            <span class="tag">Research focused</span>
+            <span class="tag">Sortable</span>
+          </div>
+          <div class="option-actions">
+            <button class="pick saved" type="button" data-option="trial">Use in app</button>
+            <a class="open" href="./design-option-trial-desk.html">Open full</a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </div>
+  <script>
+    var DESIGN_KEY = 'navigator_design_lab_choice';
+    var NOTES_KEY = 'navigator_design_lab_notes';
+    var options = {
+      clinical: {
+        label: 'Option A: Clinical Console',
+        shortLabel: 'Option A',
+        url: './design-option-clinical.html'
+      },
+      journey: {
+        label: 'Option B: Patient Journey',
+        shortLabel: 'Option B',
+        url: './design-option-journey.html'
+      },
+      trial: {
+        label: 'Option C: Trial Desk',
+        shortLabel: 'Option C',
+        url: './design-option-trial-desk.html'
+      }
+    };
+    var activeOption = localStorage.getItem(DESIGN_KEY) || 'trial';
+    var favorite = localStorage.getItem(DESIGN_KEY) || 'trial';
+    var notes = document.getElementById('designNotes');
+    var frame = document.getElementById('previewFrame');
+    var title = document.getElementById('previewTitle');
+    var openFull = document.getElementById('openFull');
+    var choiceBox = document.getElementById('choiceBox');
+
+    function setActive(optionName, saveChoice){
+      activeOption = optionName;
+      var option = options[optionName];
+      frame.src = option.url;
+      title.innerText = option.label;
+      openFull.href = option.url;
+      if(saveChoice){
+        favorite = optionName;
+        localStorage.setItem(DESIGN_KEY, favorite);
+      }
+      document.querySelectorAll('.tab').forEach(function(tab){
+        tab.classList.toggle('active', tab.dataset.option === optionName);
+      });
+      document.querySelectorAll('.pick').forEach(function(button){
+        button.classList.toggle('saved', button.dataset.option === optionName);
+      });
+      document.querySelectorAll('.option').forEach(function(card){
+        card.classList.toggle('selected', card.dataset.card === optionName);
+      });
+      renderFavorite();
+    }
+
+    function renderFavorite(){
+      if(!favorite || !options[favorite]){
+        choiceBox.innerHTML = '<span><strong>Current favorite:</strong> none yet</span>';
+        return;
+      }
+      choiceBox.innerHTML = '<span><strong>Working app design:</strong> ' + options[favorite].label + '</span><a href="./Michigan_HeadNeck_Navigator.html">Open app</a>';
+    }
+
+    document.querySelectorAll('[data-option]').forEach(function(control){
+      control.addEventListener('click', function(){
+        setActive(control.dataset.option, true);
+        document.querySelector('.lab').scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    document.getElementById('saveFavorite').addEventListener('click', function(){
+      favorite = activeOption;
+      localStorage.setItem(DESIGN_KEY, favorite);
+      setActive(activeOption, false);
+      renderFavorite();
+    });
+
+    document.getElementById('clearFavorite').addEventListener('click', function(){
+      favorite = '';
+      localStorage.removeItem(DESIGN_KEY);
+      renderFavorite();
+    });
+
+    notes.value = localStorage.getItem(NOTES_KEY) || '';
+    notes.addEventListener('input', function(){
+      localStorage.setItem(NOTES_KEY, notes.value);
+    });
+
+    setActive(activeOption, false);
+    renderFavorite();
+  </script>
+</body>
+</html>

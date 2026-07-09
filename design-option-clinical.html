@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design Option A - Clinical Console</title>
+  <style>
+    :root{
+      --navy:#00274c;
+      --maize:#ffcb05;
+      --ink:#152233;
+      --muted:#5e6f82;
+      --line:#d7e4e1;
+      --paper:#ffffff;
+      --wash:#f4faf8;
+      --green:#176b4d;
+      --green-soft:#e3f3ec;
+      --amber:#a06d00;
+      --rose:#9d2a2a;
+      --shadow:0 16px 38px rgba(18,44,58,.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Avenir Next","Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--wash)}
+    a{color:inherit}
+    .app{min-height:100vh;display:grid;grid-template-columns:330px 1fr}
+    .sidebar{background:#fff;border-right:1px solid var(--line);padding:22px;position:sticky;top:0;height:100vh;overflow:auto}
+    .brand{display:flex;gap:12px;align-items:center;margin-bottom:22px}
+    .mi{display:grid;place-items:center;width:48px;height:38px;border-radius:6px;background:var(--maize);color:var(--navy);font-size:22px;font-weight:900}
+    .brand strong{display:block;color:var(--navy);font-size:18px}
+    .brand span{display:block;color:var(--muted);font-size:12px}
+    .field{margin-bottom:12px}
+    label{display:block;font-size:12px;font-weight:800;color:#46586b;margin-bottom:5px}
+    input,select,textarea{width:100%;border:1px solid var(--line);border-radius:6px;padding:10px 11px;background:#fbfefd;font:inherit;color:var(--ink)}
+    textarea{min-height:90px;resize:vertical}
+    .btn{border:0;border-radius:6px;padding:11px 13px;font-weight:900;font:inherit;cursor:pointer}
+    .btn-primary{background:var(--green);color:#fff}
+    .btn-light{background:#f3f8f6;color:var(--green);border:1px solid var(--line)}
+    .row{display:flex;gap:8px;flex-wrap:wrap}
+    .row .btn{flex:1}
+    .content{padding:24px;overflow:auto}
+    .top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}
+    .top h1{margin:0;color:var(--navy);font-size:34px;letter-spacing:0;line-height:1.1}
+    .top p{margin:7px 0 0;color:var(--muted);max-width:680px;line-height:1.55}
+    .back{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 14px;text-decoration:none;font-weight:900;color:var(--navy)}
+    .statbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
+    .stat,.panel{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}
+    .stat{padding:15px}
+    .stat b{display:block;color:var(--navy);font-size:23px}
+    .stat span{color:var(--muted);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
+    .panel{padding:18px}
+    .panel-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:14px}
+    h2{margin:0;color:var(--navy);font-size:21px}
+    .kicker{margin:0 0 5px;color:var(--green);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
+    .badge{display:inline-flex;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900;background:var(--green-soft);color:var(--green)}
+    .list{display:grid;gap:10px}
+    .item{border:1px solid var(--line);border-radius:6px;padding:12px;background:#fbfefd}
+    .item strong{display:block;margin-bottom:4px;color:#1d3744}
+    .item p{margin:0;color:var(--muted);line-height:1.45;font-size:14px}
+    .score{height:12px;border-radius:999px;background:#e8efec;overflow:hidden}
+    .score span{display:block;height:100%;width:72%;background:var(--green)}
+    .trial-table{width:100%;border-collapse:collapse;font-size:14px}
+    .trial-table th{text-align:left;color:#607086;font-size:12px;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--line);padding:10px}
+    .trial-table td{border-bottom:1px solid var(--line);padding:12px 10px;vertical-align:top}
+    @media(max-width:960px){.app{grid-template-columns:1fr}.sidebar{position:static;height:auto}.grid,.statbar{grid-template-columns:1fr}.top{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><span class="mi">Mi</span><div><strong>Clinical Console</strong><span>Option A</span></div></div>
+      <div class="field"><label>Disease site</label><select><option>Oropharynx</option><option>Oral cavity</option><option>Thyroid</option></select></div>
+      <div class="field"><label>Stage</label><select><option>Stage III</option><option>Stage IVA</option><option>Stage IVC</option></select></div>
+      <div class="field"><label>Biomarkers</label><input value="HPV positive, CPS >= 1"></div>
+      <div class="field"><label>Treatment context</label><select><option>Definitive / first-line</option><option>Recurrent / metastatic</option></select></div>
+      <div class="row">
+        <button class="btn btn-primary">Find matches</button>
+        <button class="btn btn-light">Build prompt</button>
+      </div>
+    </aside>
+    <main class="content">
+      <div class="top">
+        <div>
+          <h1>Head &amp; Neck Navigator</h1>
+          <p>A professional dashboard where the patient profile stays pinned while AI safety, doctor prep, and trial matching update beside it.</p>
+        </div>
+        <a class="back" href="./design-gallery.html">Design chooser</a>
+      </div>
+      <section class="statbar">
+        <div class="stat"><span>Safety score</span><b>72</b></div>
+        <div class="stat"><span>Trial matches</span><b>6</b></div>
+        <div class="stat"><span>Open studies</span><b>4</b></div>
+        <div class="stat"><span>Visit questions</span><b>5</b></div>
+      </section>
+      <div class="grid">
+        <section class="panel">
+          <div class="panel-head"><div><p class="kicker">AI safety</p><h2>Answer Review</h2></div><span class="badge">Moderate risk</span></div>
+          <div class="score"><span></span></div>
+          <div class="list" style="margin-top:14px">
+            <div class="item"><strong>Possible concern</strong><p>The answer needs clearer language about what depends on pathology, stage, and biomarkers.</p></div>
+            <div class="item"><strong>What to verify</strong><p>Ask whether trial eligibility requires full screening by the coordinator and care team.</p></div>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="panel-head"><div><p class="kicker">Visit prep</p><h2>Doctor Questions</h2></div></div>
+          <div class="list">
+            <div class="item"><strong>1</strong><p>Which details of my staging change the treatment options?</p></div>
+            <div class="item"><strong>2</strong><p>What side effects should make me call urgently?</p></div>
+            <div class="item"><strong>3</strong><p>Are any trials realistic for my case right now?</p></div>
+          </div>
+        </section>
+        <section class="panel" style="grid-column:1 / -1">
+          <div class="panel-head"><div><p class="kicker">Matching</p><h2>Trial Matches</h2></div><span class="badge">Recruiting only</span></div>
+          <table class="trial-table">
+            <thead><tr><th>Study</th><th>Why it matched</th><th>Next step</th></tr></thead>
+            <tbody>
+              <tr><td>CAPT-HN</td><td>Recurrent/metastatic HNSCC after prior PD-1.</td><td>Verify prior therapy details.</td></tr>
+              <tr><td>VERSATILE-003</td><td>HPV16+ R/M pathway, treatment-naive setting.</td><td>Confirm HPV16 and CPS.</td></tr>
+              <tr><td>MiHERO</td><td>Broad repository option for tissue and biofluid banking.</td><td>Ask about consent timing.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

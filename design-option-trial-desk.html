@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design Option C - Trial Desk</title>
+  <style>
+    :root{
+      --ink:#20231f;
+      --muted:#64695f;
+      --line:#d9ddd2;
+      --paper:#ffffff;
+      --base:#f5f6f1;
+      --navy:#00274c;
+      --maize:#ffcb05;
+      --olive:#516632;
+      --blue:#245b84;
+      --danger:#963f31;
+      --shadow:0 14px 32px rgba(40,47,34,.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Avenir Next","Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--base)}
+    a{color:inherit}
+    .shell{max-width:1280px;margin:0 auto;padding:18px}
+    .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .mi{display:grid;place-items:center;width:48px;height:38px;border-radius:6px;background:var(--maize);color:var(--navy);font-size:22px;font-weight:900}
+    .brand strong{display:block;color:var(--navy);font-size:18px}
+    .brand span{display:block;color:var(--muted);font-size:12px}
+    .back{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 14px;text-decoration:none;font-weight:900;color:var(--navy)}
+    .workspace{display:grid;grid-template-columns:280px 1fr 320px;gap:12px}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);padding:14px}
+    .panel h2{margin:0 0 10px;color:#242a21;font-size:18px}
+    .kicker{margin:0 0 5px;color:var(--olive);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
+    label{display:block;color:#5c6555;font-size:12px;font-weight:900;margin-bottom:5px}
+    select,input{width:100%;border:1px solid var(--line);border-radius:6px;background:#fbfcf8;padding:9px 10px;font:inherit;color:var(--ink)}
+    .field{margin-bottom:10px}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-size:12px;font-weight:900;color:#4e5d45}
+    .pill.active{background:var(--olive);border-color:var(--olive);color:#fff}
+    .btn{width:100%;border:0;border-radius:6px;background:var(--navy);color:#fff;padding:11px 12px;font:inherit;font-weight:900}
+    .scoregrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+    .score{background:#fbfcf8;border:1px solid var(--line);border-radius:8px;padding:11px}
+    .score span{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:900}
+    .score b{display:block;font-size:25px;color:var(--navy);margin-top:3px}
+    table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+    th{text-align:left;background:#eef1e8;color:#50584d;font-size:11px;text-transform:uppercase;letter-spacing:.08em;padding:10px;border-bottom:1px solid var(--line)}
+    td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}
+    tr:last-child td{border-bottom:0}
+    .match{display:inline-flex;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:900;background:#e5efdc;color:var(--olive)}
+    .warn{background:#fff0df;color:#8a5c00}
+    .danger{background:#fae3df;color:var(--danger)}
+    .note{border:1px solid var(--line);border-radius:8px;background:#fbfcf8;padding:12px;margin-bottom:10px}
+    .note strong{display:block;margin-bottom:5px}
+    .note p{margin:0;color:var(--muted);line-height:1.45;font-size:14px}
+    @media(max-width:1050px){.workspace{grid-template-columns:1fr}.scoregrid{grid-template-columns:1fr}.bar{flex-direction:column;align-items:flex-start}.back{width:100%;text-align:center}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="bar">
+      <div class="brand"><span class="mi">Mi</span><div><strong>Trial Desk</strong><span>Option C</span></div></div>
+      <a class="back" href="./design-gallery.html">Design chooser</a>
+    </div>
+    <section class="workspace">
+      <aside class="panel">
+        <p class="kicker">Filters</p>
+        <h2>Patient Context</h2>
+        <div class="field"><label>Site</label><select><option>Oropharynx</option><option>Oral cavity</option><option>Thyroid</option></select></div>
+        <div class="field"><label>Intent</label><select><option>Recurrent / metastatic</option><option>Definitive</option><option>Adjuvant</option></select></div>
+        <div class="field"><label>HPV / p16</label><select><option>Positive</option><option>Negative</option><option>Unknown</option></select></div>
+        <div class="field"><label>Prior treatment</label><select><option>PD-1 received</option><option>Treatment naive</option><option>Post-operative</option></select></div>
+        <button class="btn">Refresh matches</button>
+      </aside>
+      <main>
+        <div class="scoregrid">
+          <div class="score"><span>Recruiting</span><b>8</b></div>
+          <div class="score"><span>Likely fits</span><b>3</b></div>
+          <div class="score"><span>Needs review</span><b>5</b></div>
+        </div>
+        <section class="panel">
+          <p class="kicker">Trial matching</p>
+          <h2>Therapeutic Trials</h2>
+          <div class="toolbar"><span class="pill active">Recruiting</span><span class="pill">Pending</span><span class="pill">Tissue studies</span><span class="pill">Export</span></div>
+          <table>
+            <thead><tr><th>Match</th><th>Study</th><th>Eligibility signal</th><th>Coordinator</th></tr></thead>
+            <tbody>
+              <tr><td><span class="match">Strong</span></td><td>CAPT-HN</td><td>Prior PD-1 and recurrent/metastatic disease appear relevant.</td><td>Laura Becker</td></tr>
+              <tr><td><span class="match warn">Review</span></td><td>VERSATILE-003</td><td>Needs HPV16 and CPS confirmation before discussion.</td><td>Susie Butler</td></tr>
+              <tr><td><span class="match">Broad</span></td><td>MiHERO Repository</td><td>Broad consent option; verify tissue and blood draw timing.</td><td>Study team</td></tr>
+              <tr><td><span class="match danger">Low</span></td><td>EA3231</td><td>Thyroid-specific and BRAF V600E required.</td><td>Susie Butler</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+      <aside class="panel">
+        <p class="kicker">Review queue</p>
+        <h2>What to Ask Next</h2>
+        <div class="note"><strong>Eligibility</strong><p>Does prior PD-1 timing fit the protocol window?</p></div>
+        <div class="note"><strong>Biomarkers</strong><p>Confirm HPV16, CPS, and whether archival tissue is available.</p></div>
+        <div class="note"><strong>Safety</strong><p>Ask which side effects would rule out a study or require urgent care.</p></div>
+        <div class="note"><strong>AI caution</strong><p>Any generated summary should be verified by the care team before acting on it.</p></div>
+      </aside>
+    </section>
+  </div>
+</body>
+</html>

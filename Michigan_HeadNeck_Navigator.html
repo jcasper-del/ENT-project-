@@ -12,11 +12,16 @@
       --navy-deep:#001a36;
       --maize:#ffcb05;
       --maize-soft:#fff6cf;
-      --ink:#172033;
-      --muted:#5d6b82;
-      --line:#d7e0ec;
+      --ink:#20231f;
+      --muted:#64695f;
+      --line:#d9ddd2;
+      --olive:#516632;
+      --olive-soft:#e5efdc;
+      --blue:#245b84;
       --paper:#ffffff;
-      --mist:#f3f6fb;
+      --mist:#f5f6f1;
+      --field:#fbfcf8;
+      --table-head:#eef1e8;
       --mint:#e5f6ed;
       --mint-ink:#1e6e40;
       --amber:#fff4dc;
@@ -25,11 +30,11 @@
       --rose-ink:#9d1c1c;
       --sky:#eaf3ff;
       --sky-ink:#1f5ca8;
-      --shadow:0 18px 36px rgba(9, 26, 53, 0.08);
-      --radius-xl:28px;
-      --radius-lg:20px;
-      --radius-md:16px;
-      --radius-sm:12px;
+      --shadow:0 14px 32px rgba(40,47,34,.08);
+      --radius-xl:12px;
+      --radius-lg:10px;
+      --radius-md:8px;
+      --radius-sm:6px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -39,22 +44,25 @@
       font-family:"Avenir Next","Segoe UI",Helvetica,Arial,sans-serif;
       color:var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(255,203,5,.2), transparent 28%),
-        radial-gradient(circle at top right, rgba(0,39,76,.12), transparent 24%),
-        linear-gradient(180deg, #f8fbff 0%, #edf3f9 100%);
+        linear-gradient(90deg, rgba(0,39,76,.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(81,102,50,.055), transparent 240px),
+        var(--mist);
+      background-size:28px 28px, auto, auto;
     }
     a{color:inherit}
     button,input,textarea,select{font:inherit}
-    .shell{max-width:1280px;margin:0 auto;padding:28px 18px 42px}
+    .shell{max-width:1280px;margin:0 auto;padding:18px 18px 36px}
     .hero{
-      background:linear-gradient(135deg, var(--navy) 0%, #0b3a65 60%, #174a79 100%);
-      color:#fff;
-      border-radius:32px;
-      padding:26px 24px;
+      background:rgba(255,255,255,.96);
+      color:var(--ink);
+      border:1px solid var(--line);
+      border-top:5px solid var(--navy);
+      border-radius:var(--radius-lg);
+      padding:18px;
       box-shadow:var(--shadow);
       position:relative;
       overflow:hidden;
-      margin-bottom:18px;
+      margin-bottom:12px;
     }
     .hero::after{
       content:"";
@@ -64,7 +72,7 @@
       width:220px;
       height:220px;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(255,203,5,.26), rgba(255,203,5,0));
+      background:radial-gradient(circle, rgba(255,203,5,.2), rgba(255,203,5,0));
       pointer-events:none;
     }
     .hero-top{display:flex;gap:16px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;position:relative;z-index:1}
@@ -75,7 +83,7 @@
       justify-content:center;
       min-width:54px;
       height:42px;
-      border-radius:10px;
+      border-radius:6px;
       background:var(--maize);
       color:var(--navy);
       font-size:24px;
@@ -85,7 +93,7 @@
     }
     .brand-copy{display:flex;flex-direction:column;gap:4px}
     .eyebrow{
-      color:rgba(255,255,255,.72);
+      color:var(--olive);
       font-size:12px;
       letter-spacing:.12em;
       text-transform:uppercase;
@@ -93,65 +101,121 @@
     }
     .hero h1{
       margin:0;
-      font-size:clamp(28px, 5vw, 44px);
-      line-height:1.02;
+      font-size:clamp(25px, 4vw, 38px);
+      line-height:1.06;
       letter-spacing:-.03em;
       max-width:720px;
+      color:var(--navy);
     }
     .hero p{
-      margin:12px 0 0;
+      margin:9px 0 0;
       max-width:720px;
-      font-size:16px;
-      line-height:1.55;
-      color:rgba(236,242,251,.9);
+      font-size:14px;
+      line-height:1.5;
+      color:var(--muted);
     }
     .status-badge{
       display:inline-flex;
       align-items:center;
       gap:8px;
       padding:8px 12px;
-      border-radius:999px;
+      border-radius:var(--radius-sm);
       font-size:12px;
       font-weight:700;
-      background:rgba(255,255,255,.12);
-      color:rgba(255,255,255,.86);
-      border:1px solid rgba(255,255,255,.12);
+      background:#fbfcf8;
+      color:var(--olive);
+      border:1px solid var(--line);
       white-space:nowrap;
     }
     .status-badge.ready{
-      background:rgba(255,203,5,.13);
-      border-color:rgba(255,203,5,.35);
-      color:var(--maize);
+      background:var(--olive-soft);
+      border-color:#cbdcb9;
+      color:var(--olive);
     }
-    .hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;position:relative;z-index:1}
+    .hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;position:relative;z-index:1}
     .hero-pill{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding:9px 12px;
+      padding:8px 10px;
       border-radius:999px;
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.12);
-      color:#fff;
-      font-size:13px;
+      background:#fbfcf8;
+      border:1px solid var(--line);
+      color:#4e5d45;
+      font-size:12px;
       font-weight:700;
     }
-    .quicknav{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}
+    .desk-strip{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:10px;
+      margin-top:14px;
+      position:relative;
+      z-index:1;
+    }
+    .desk-stat{
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      background:#fbfcf8;
+    }
+    .desk-stat span{
+      display:block;
+      color:var(--olive);
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+      margin-bottom:4px;
+    }
+    .desk-stat strong{display:block;color:var(--navy);font-size:13px;line-height:1.25}
+    .quicknav{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin:0 0 12px;
+      padding:10px;
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      background:rgba(255,255,255,.82);
+      box-shadow:0 8px 22px rgba(40,47,34,.05);
+    }
     .quicknav a{
       text-decoration:none;
-      padding:10px 13px;
+      padding:8px 10px;
       border-radius:999px;
-      background:rgba(255,255,255,.92);
-      color:var(--navy);
+      background:#fff;
+      color:#4e5d45;
       border:1px solid var(--line);
-      font-size:13px;
+      font-size:12px;
       font-weight:800;
-      box-shadow:0 8px 24px rgba(9, 26, 53, 0.04);
+    }
+    .quicknav a:first-child{background:var(--olive);border-color:var(--olive);color:#fff}
+    .theme-control{
+      margin-left:auto;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 8px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
+    }
+    .theme-control select{
+      border:0;
+      background:transparent;
+      color:var(--navy);
+      font-weight:900;
+      outline:none;
+      cursor:pointer;
     }
     .layout{
       display:grid;
-      grid-template-columns:320px minmax(0,1fr);
-      gap:18px;
+      grid-template-columns:300px minmax(0,1fr);
+      gap:12px;
       align-items:start;
     }
     @media(max-width:980px){
@@ -160,16 +224,15 @@
     .sidebar{
       display:flex;
       flex-direction:column;
-      gap:16px;
+      gap:12px;
     }
-    .stack{display:flex;flex-direction:column;gap:16px}
+    .stack{display:flex;flex-direction:column;gap:12px}
     .panel{
-      background:rgba(255,255,255,.92);
-      border:1px solid rgba(215,224,236,.95);
-      border-radius:24px;
+      background:rgba(255,255,255,.96);
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
       box-shadow:var(--shadow);
-      padding:20px;
-      backdrop-filter:blur(8px);
+      padding:16px;
     }
     .section-head{
       display:flex;
@@ -180,7 +243,7 @@
       margin-bottom:14px;
     }
     .section-kicker{
-      color:#7a8698;
+      color:var(--olive);
       font-size:11px;
       letter-spacing:.12em;
       text-transform:uppercase;
@@ -189,8 +252,8 @@
     }
     .section-head h2{
       margin:0;
-      color:var(--navy);
-      font-size:24px;
+      color:#242a21;
+      font-size:21px;
       line-height:1.1;
       letter-spacing:-.03em;
     }
@@ -203,7 +266,7 @@
     }
     .notice{
       padding:14px 16px;
-      border-radius:18px;
+      border-radius:var(--radius-md);
       background:var(--amber);
       color:var(--amber-ink);
       border:1px solid #f2d887;
@@ -211,6 +274,33 @@
       font-size:13px;
     }
     .notice strong{display:block;font-size:15px;margin-bottom:5px}
+    .config-card{
+      padding:16px;
+      border-radius:var(--radius-md);
+      border:1px solid var(--line);
+      background:#fbfcf8;
+      margin-bottom:14px;
+    }
+    .status-note{
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:var(--radius-md);
+      background:var(--sky);
+      color:var(--sky-ink);
+      border:1px solid #bfd6fb;
+      font-size:13px;
+      line-height:1.45;
+    }
+    .status-note.error{
+      background:var(--rose);
+      color:var(--rose-ink);
+      border-color:#f3baba;
+    }
+    .status-note.success{
+      background:var(--mint);
+      color:var(--mint-ink);
+      border-color:#bde0cb;
+    }
     .subgrid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:14px}
     @media(max-width:760px){
       .subgrid{grid-template-columns:1fr}
@@ -220,10 +310,10 @@
       .insight-grid{grid-template-columns:1fr}
     }
     .insight{
-      padding:16px;
-      border-radius:18px;
+      padding:14px;
+      border-radius:var(--radius-md);
       border:1px solid var(--line);
-      background:linear-gradient(180deg, #ffffff, #f7faff);
+      background:#fbfcf8;
     }
     .insight strong{display:block;font-size:15px;color:var(--navy);margin-bottom:6px}
     .insight p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
@@ -231,10 +321,10 @@
     .fi label{display:block;font-size:13px;color:#48556a;font-weight:700;margin-bottom:5px}
     .fi input,.fi textarea,.fi select{
       width:100%;
-      padding:11px 12px;
+      padding:10px 11px;
       border:1px solid var(--line);
-      border-radius:14px;
-      background:#fbfdff;
+      border-radius:var(--radius-sm);
+      background:var(--field);
       color:var(--ink);
       font-size:14px;
       outline:none;
@@ -242,7 +332,7 @@
     }
     .fi input:focus,.fi textarea:focus,.fi select:focus{
       border-color:var(--navy);
-      box-shadow:0 0 0 4px rgba(0,39,76,.08);
+      box-shadow:0 0 0 3px rgba(0,39,76,.08);
       background:#fff;
     }
     .fi textarea{min-height:96px;resize:vertical;line-height:1.5}
@@ -254,7 +344,7 @@
       letter-spacing:.12em;
       margin:0 0 .75rem;
     }
-    .dv{height:1px;background:#edf2f8;margin:1rem 0}
+    .dv{height:1px;background:var(--line);margin:1rem 0}
     .bg{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:.875rem}
     .bf label{font-size:12px;color:#5c677a;font-weight:700;margin-bottom:4px;display:block}
     .bf select{
@@ -262,26 +352,26 @@
       font-size:12px;
       padding:9px 10px;
       border:1px solid var(--line);
-      border-radius:12px;
-      background:#fbfdff;
+      border-radius:var(--radius-sm);
+      background:var(--field);
       color:var(--ink);
     }
     .bh{display:none}
-    .cg{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:4px;background:#fbfdff}
-    .ci{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #eef3f9;cursor:pointer}
+    .cg{border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;margin-top:4px;background:var(--field)}
+    .ci{display:flex;align-items:center;gap:10px;padding:9px 11px;border-bottom:1px solid var(--line);cursor:pointer}
     .ci:last-child{border-bottom:none}
-    .ci:hover{background:#f6f9fd}
+    .ci:hover{background:#f7f8f2}
     .ci input[type="checkbox"]{width:15px;height:15px;accent-color:var(--navy);margin:0}
     .ci span{font-size:13px;color:var(--ink)}
-    .cn{background:#f7f9fd}
+    .cn{background:#f0f3eb}
     .cn span{font-weight:800}
-    .cd{height:1px;background:#eef3f9}
-    .row{display:flex;flex-wrap:wrap;gap:10px}
+    .cd{height:1px;background:var(--line)}
+    .row{display:flex;flex-wrap:wrap;gap:8px}
     .btn{
       border:none;
-      border-radius:14px;
-      padding:12px 14px;
-      font-size:14px;
+      border-radius:var(--radius-sm);
+      padding:11px 12px;
+      font-size:13px;
       font-weight:800;
       cursor:pointer;
       transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
@@ -290,16 +380,16 @@
     .btn:active{transform:translateY(0)}
     .btn-navy{
       background:var(--navy);
-      color:var(--maize);
+      color:#fff;
       box-shadow:0 12px 24px rgba(0,39,76,.16);
     }
     .btn-soft{
-      background:var(--maize-soft);
-      color:var(--navy);
-      border:1px solid #eed97d;
+      background:var(--olive-soft);
+      color:var(--olive);
+      border:1px solid #cbdcb9;
     }
     .btn-light{
-      background:#f5f8fc;
+      background:#fbfcf8;
       color:var(--navy);
       border:1px solid var(--line);
     }
@@ -310,9 +400,9 @@
     }
     .btn-block{width:100%;justify-content:center}
     .summary-box{
-      padding:15px 16px;
-      border-radius:18px;
-      background:linear-gradient(180deg, #f8fbff, #eef4fb);
+      padding:14px;
+      border-radius:var(--radius-md);
+      background:#fbfcf8;
       border:1px solid var(--line);
       color:var(--navy);
     }
@@ -320,19 +410,19 @@
     .summary-box p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
     .template-list{display:grid;gap:10px}
     .template{
-      padding:14px;
-      border-radius:16px;
-      background:#f6f9fd;
+      padding:13px;
+      border-radius:var(--radius-md);
+      background:#fbfcf8;
       border:1px solid var(--line);
       cursor:pointer;
     }
     .template strong{display:block;color:var(--navy);margin-bottom:6px}
     .template p{margin:0;color:var(--muted);font-size:13px;line-height:1.4}
     .output{
-      padding:14px;
-      border-radius:16px;
+      padding:13px;
+      border-radius:var(--radius-md);
       border:1px solid var(--line);
-      background:#f7faff;
+      background:#fbfcf8;
       color:var(--ink);
       white-space:pre-wrap;
       line-height:1.55;
@@ -369,15 +459,15 @@
       display:flex;
       gap:12px;
       padding:12px;
-      border-radius:16px;
+      border-radius:var(--radius-md);
       border:1px solid var(--line);
-      background:#f7faff;
-      margin-bottom:10px;
+      background:#fbfcf8;
+      margin-bottom:8px;
     }
     .num{
       width:30px;
       height:30px;
-      border-radius:50%;
+      border-radius:var(--radius-sm);
       display:grid;
       place-items:center;
       background:var(--navy);
@@ -389,7 +479,7 @@
     .q-body textarea{min-height:68px}
     .mini-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
     .mini{
-      border-radius:999px;
+      border-radius:var(--radius-sm);
       border:1px solid var(--line);
       background:#fff;
       color:var(--navy);
@@ -402,7 +492,7 @@
     .sl{
       font-size:11px;
       font-weight:800;
-      color:#8692a4;
+      color:var(--olive);
       text-transform:uppercase;
       letter-spacing:.12em;
       margin-bottom:.65rem;
@@ -410,42 +500,42 @@
       align-items:center;
       gap:10px;
     }
-    .sl::after{content:"";flex:1;height:1px;background:#e6edf6}
+    .sl::after{content:"";flex:1;height:1px;background:var(--line)}
     .fb{display:flex;align-items:center;gap:8px;justify-content:flex-end}
     .fl{font-size:11px;color:#7a8698;font-weight:700}
-    .tg{display:flex;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+    .tg{display:flex;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:#fff}
     .tb{
       font-size:12px;
-      padding:8px 14px;
+      padding:8px 12px;
       border:none;
       background:#fff;
-      color:#5d6b82;
+      color:#4e5d45;
       cursor:pointer;
       font-weight:700;
     }
     .tb:not(:last-child){border-right:1px solid var(--line)}
-    .tb.ac{background:var(--navy);color:#fff}
+    .tb.ac{background:var(--olive);color:#fff}
     .es,.ls{text-align:center;padding:2.8rem 1rem;color:#96a2b5}
     .es i{font-size:30px;display:block;margin-bottom:12px}
     .et{font-size:15px;font-weight:800;color:#5d6b82;margin-bottom:5px}
     .em{font-size:13px;color:#7a8698;line-height:1.5}
     .sp{display:inline-block;width:24px;height:24px;border:2px solid #dbe3ef;border-top-color:var(--navy);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:12px}
     @keyframes spin{to{transform:rotate(360deg)}}
-    .rc{font-size:14px;color:#6b778a;margin-bottom:.85rem}
+    .rc{font-size:13px;color:var(--muted);margin-bottom:.75rem}
     .rc strong{color:var(--ink)}
     .gh{
       font-size:12px;
       font-weight:800;
-      color:#4e5b70;
-      padding:8px 12px;
-      background:#f5f8fc;
-      border-radius:10px;
+      color:#4e5d45;
+      padding:8px 10px;
+      background:var(--table-head);
+      border-radius:var(--radius-sm);
       margin-bottom:8px;
       margin-top:6px;
       display:flex;
       align-items:center;
       gap:8px;
-      border:1px solid #ebf1f8;
+      border:1px solid var(--line);
     }
     .dm,.dmo,.db,.dbl,.dg,.dgl{width:9px;height:9px;border-radius:50%;flex-shrink:0}
     .dm{background:var(--maize);border:1px solid #c89f00}
@@ -456,24 +546,24 @@
     .dgl{background:#c8d1dd}
     .trial-card{
       background:#fff;
-      border:1px solid #e4ebf4;
-      border-radius:18px;
-      padding:18px;
-      margin-bottom:10px;
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      padding:14px;
+      margin-bottom:8px;
       transition:border-color .15s,box-shadow .15s;
     }
-    .trial-card:hover{border-color:#cdd8e8;box-shadow:0 8px 22px rgba(9,26,53,.06)}
+    .trial-card:hover{border-color:#bcc5b4;box-shadow:0 8px 22px rgba(40,47,34,.08)}
     .trial-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
-    .trial-title{font-size:15px;font-weight:800;color:var(--ink);line-height:1.45;flex:1}
-    .match-badge{font-size:11px;padding:4px 10px;border-radius:999px;font-weight:800;white-space:nowrap}
+    .trial-title{font-size:14px;font-weight:900;color:var(--ink);line-height:1.45;flex:1}
+    .match-badge{font-size:11px;padding:5px 8px;border-radius:999px;font-weight:900;white-space:nowrap}
     .trial-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
     .pill{
       font-size:11px;
       padding:4px 10px;
       border-radius:999px;
-      background:#f4f6fa;
-      color:#627086;
-      border:1px solid #e5ebf4;
+      background:#fbfcf8;
+      color:#5c6555;
+      border:1px solid var(--line);
     }
     .pp{background:#f1efff;color:#594ec7;border-color:#d9d4fb}
     .pr{background:#e6f4ec;color:#1e6e40;border-color:#b8dfc8}
@@ -488,7 +578,7 @@
     .cl{
       font-size:10px;
       font-weight:800;
-      color:#98a4b7;
+      color:var(--olive);
       text-transform:uppercase;
       letter-spacing:.08em;
       margin-top:12px;
@@ -499,15 +589,15 @@
       font-size:12px;
       margin-top:10px;
       padding:9px 11px;
-      border-radius:12px;
+      border-radius:var(--radius-sm);
       display:flex;
       align-items:flex-start;
       gap:8px;
     }
-    .ta{display:flex;align-items:center;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid #eef3f9;flex-wrap:wrap}
+    .ta{display:flex;align-items:center;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);flex-wrap:wrap}
     .tl{
       font-size:12px;
-      color:#1a56a0;
+      color:var(--blue);
       text-decoration:none;
       display:inline-flex;
       align-items:center;
@@ -522,7 +612,7 @@
       font-size:12px;
       font-weight:800;
       padding:8px 14px;
-      border-radius:999px;
+      border-radius:var(--radius-sm);
       background:var(--navy);
       color:#fff;
       border:none;
@@ -531,29 +621,29 @@
     }
     .proto-card{
       background:#fff;
-      border:1px solid #e4ebf4;
-      border-left:3px solid #1d6f42;
-      border-radius:18px;
-      padding:18px;
-      margin-bottom:10px;
+      border:1px solid var(--line);
+      border-left:3px solid var(--olive);
+      border-radius:var(--radius-md);
+      padding:14px;
+      margin-bottom:8px;
     }
     .proto-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px}
     .proto-title{font-size:15px;font-weight:800;color:var(--ink)}
-    .proto-count{font-size:11px;padding:4px 10px;border-radius:999px;background:#e6f4ec;color:#1e6e40;font-weight:800;white-space:nowrap}
+    .proto-count{font-size:11px;padding:4px 9px;border-radius:999px;background:var(--olive-soft);color:var(--olive);font-weight:800;white-space:nowrap}
     .proto-desc{font-size:12px;color:#5d6b82;line-height:1.6;margin:4px 0 8px}
-    .proto-list{border-top:1px solid #eef3f9;padding-top:8px;margin-top:6px}
-    .proto-item{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #f6f8fb}
+    .proto-list{border-top:1px solid var(--line);padding-top:8px;margin-top:6px}
+    .proto-item{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #edf0e7}
     .proto-item:last-child{border-bottom:none}
     .proto-subtitle{font-size:12.5px;color:var(--ink);font-weight:800}
     .proto-meta{font-size:11px;color:#8591a5;margin-top:2px;line-height:1.5}
-    .proto-link{font-size:11px;color:#1a56a0;text-decoration:none;white-space:nowrap;flex-shrink:0}
+    .proto-link{font-size:11px;color:var(--blue);text-decoration:none;white-space:nowrap;flex-shrink:0}
     .proto-pill{
       font-size:10px;
       padding:3px 8px;
       border-radius:999px;
-      background:#f3f5f8;
-      color:#666;
-      border:1px solid #e7ebf2;
+      background:#fbfcf8;
+      color:#5c6555;
+      border:1px solid var(--line);
       margin-right:4px;
       display:inline-block;
       margin-bottom:4px;
@@ -561,7 +651,7 @@
     .rmorewrap{text-align:center;margin-top:6px}
     .rmore{
       font-size:12px;
-      color:#1a56a0;
+      color:var(--blue);
       background:none;
       border:none;
       cursor:pointer;
@@ -569,11 +659,11 @@
       font-weight:700;
     }
     .source-box{
-      padding:14px;
-      border-radius:16px;
+      padding:13px;
+      border-radius:var(--radius-md);
       border:1px solid var(--line);
-      background:#f7faff;
-      margin-bottom:10px;
+      background:#fbfcf8;
+      margin-bottom:8px;
     }
     .source-box strong{display:block;font-size:15px;color:var(--navy);margin-bottom:5px}
     .source-box p{margin:0 0 8px;color:var(--muted);font-size:13px;line-height:1.45}
@@ -585,7 +675,7 @@
       background:var(--maize);
       color:var(--navy);
       padding:9px 12px;
-      border-radius:999px;
+      border-radius:var(--radius-sm);
       font-size:12px;
       font-weight:900;
     }
@@ -598,18 +688,90 @@
       padding-bottom:12px;
     }
     .foot strong{color:#697589}
+    body.theme-clinical{
+      --ink:#172033;
+      --muted:#607086;
+      --line:#d8e8e4;
+      --olive:#176b4d;
+      --olive-soft:#eff8f3;
+      --blue:#0b6f7a;
+      --mist:#f5fbfa;
+      --field:#fbfefe;
+      --table-head:#e9f4f1;
+      --shadow:0 18px 45px rgba(17,31,49,.08);
+      --radius-xl:22px;
+      --radius-lg:18px;
+      --radius-md:14px;
+      --radius-sm:10px;
+      background:
+        radial-gradient(circle at top left, rgba(11,111,122,.13), transparent 32%),
+        linear-gradient(180deg, #f8fdfc, #edf7f5);
+    }
+    body.theme-clinical .hero{
+      border-top:0;
+      background:linear-gradient(135deg, #ffffff 0%, #f3fbf9 100%);
+    }
+    body.theme-clinical .layout{grid-template-columns:340px minmax(0,1fr);gap:16px}
+    body.theme-clinical .quicknav a:first-child,
+    body.theme-clinical .tb.ac{background:#176b4d;border-color:#176b4d;color:#fff}
+    body.theme-clinical .hero-pill,
+    body.theme-clinical .desk-stat{background:#f8fdfc}
+
+    body.theme-journey{
+      --ink:#2b211c;
+      --muted:#746158;
+      --line:#ead8cb;
+      --olive:#b75237;
+      --olive-soft:#fff0e8;
+      --blue:#8a4b32;
+      --mist:#fff8f2;
+      --field:#fffdf9;
+      --table-head:#fff0e6;
+      --shadow:0 22px 46px rgba(116,75,50,.12);
+      --radius-xl:30px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --radius-sm:14px;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(255,203,5,.2), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(183,82,55,.13), transparent 28%),
+        linear-gradient(180deg, #fffaf5, #fff3e8);
+    }
+    body.theme-journey .hero{
+      border-top:0;
+      background:linear-gradient(135deg, #fffaf5 0%, #fff0e8 100%);
+    }
+    body.theme-journey .layout{grid-template-columns:minmax(280px, .78fr) minmax(0, 1.22fr);gap:18px}
+    body.theme-journey .quicknav{border-radius:24px}
+    body.theme-journey .quicknav a:first-child,
+    body.theme-journey .tb.ac{background:#b75237;border-color:#b75237;color:#fff}
+    body.theme-journey .hero-pill,
+    body.theme-journey .desk-stat{background:#fffdf9}
+    body.theme-journey .trial-card,
+    body.theme-journey .proto-card,
+    body.theme-journey .question-card{border-radius:18px}
+
+    body.theme-trial .hero{
+      border-top:5px solid var(--navy);
+    }
+    @media(max-width:980px){
+      body.theme-clinical .layout,
+      body.theme-journey .layout{grid-template-columns:1fr}
+    }
     @media(max-width:560px){
       .shell{padding:16px 12px 30px}
-      .hero{padding:22px 18px}
-      .panel{padding:16px}
+      .hero{padding:16px}
+      .panel{padding:14px}
+      .desk-strip{grid-template-columns:1fr}
       .brand-mi{min-width:48px;height:38px;font-size:22px}
       .quicknav a{font-size:12px;padding:9px 12px}
+      .theme-control{width:100%;justify-content:space-between;border-radius:var(--radius-sm)}
       .row .btn{flex:1 1 100%}
       .btn{width:100%}
     }
   </style>
 </head>
-<body>
+<body class="theme-trial">
   <div class="shell">
     <header class="hero">
       <div class="hero-top">
@@ -618,10 +780,10 @@
             <span class="brand-mi">Mi</span>
             <div class="brand-copy">
               <div class="eyebrow">University of Michigan Rogel Cancer Center</div>
-              <h1>Head &amp; Neck Navigator</h1>
+              <h1 id="appTitle">Head &amp; Neck Trial Desk</h1>
             </div>
           </div>
-          <p>Patient-safe AI guidance, appointment prep, and trial plus study matching in one place. This combines the clearer safety workflow from the ENT guide with the stronger clinical matching tools from MiTrial.</p>
+          <p id="appLead">A denser clinical workspace for patient-safe AI guidance, appointment prep, and trial plus study matching. The left profile drives the matching desk, draft prompts, visit notes, and research protocol review.</p>
         </div>
         <span class="status-badge" id="sbadge"><i class="ti ti-loader-2"></i> Loading curated trial data...</span>
       </div>
@@ -631,9 +793,16 @@
         <span class="hero-pill"><i class="ti ti-clipboard-list"></i> Trial + tissue bank matching</span>
         <span class="hero-pill"><i class="ti ti-device-floppy"></i> Local autosave</span>
       </div>
+      <div class="desk-strip" aria-label="Trial desk workflow">
+        <div class="desk-stat"><span id="themeStatLabel">Workspace</span><strong id="themeStatValue">Trial Desk design selected</strong></div>
+        <div class="desk-stat"><span>Profile</span><strong>One shared patient context</strong></div>
+        <div class="desk-stat"><span id="themeStatTwoLabel">Review</span><strong id="themeStatTwoValue">Recruiting trials + protocols</strong></div>
+        <div class="desk-stat"><span>Safety</span><strong>Care-team verification required</strong></div>
+      </div>
     </header>
 
     <nav class="quicknav">
+      <a href="./design-gallery.html">Design Options</a>
       <a href="#profile">Patient Profile</a>
       <a href="#overview">Overview</a>
       <a href="#prompt-builder">Build Prompt</a>
@@ -642,6 +811,14 @@
       <a href="#trials">Trials &amp; Studies</a>
       <a href="#visit">Visit Notes</a>
       <a href="#sources">Trusted Sources</a>
+      <label class="theme-control" for="designTheme">
+        Design
+        <select id="designTheme" onchange="applyDesignTheme(this.value, true)">
+          <option value="clinical">A: Clinical Console</option>
+          <option value="journey">B: Patient Journey</option>
+          <option value="trial">C: Trial Desk</option>
+        </select>
+      </label>
     </nav>
 
     <div class="layout">
@@ -867,6 +1044,18 @@
           </div>
           <div class="subgrid">
             <div>
+              <div class="config-card">
+                <div class="pt">Private AI connection</div>
+                <div class="fi">
+                  <label for="apiBase">AI server URL</label>
+                  <input id="apiBase" value="http://localhost:8787" placeholder="https://your-backend.example.com" oninput="saveState()">
+                </div>
+                <div class="row">
+                  <button class="btn btn-light" onclick="testAiConnection()"><i class="ti ti-plug-connected"></i> Test connection</button>
+                  <button class="btn btn-soft" onclick="askAiForDraft()"><i class="ti ti-sparkles"></i> Ask AI for draft</button>
+                </div>
+                <div id="aiStatus" class="status-note">Run the local AI server first so your OpenAI key stays off the browser. For GitHub Pages, paste your deployed HTTPS backend URL here.</div>
+              </div>
               <div class="fi">
                 <label for="goal">What do you want to understand?</label>
                 <textarea id="goal" placeholder="Example: understand side effects, ask about standard treatment, compare whether a trial sounds relevant" oninput="saveState()"></textarea>
@@ -916,10 +1105,12 @@
           </div>
           <div class="row">
             <button class="btn btn-navy" onclick="loadExampleAnswer()"><i class="ti ti-beaker"></i> Load example</button>
+            <button class="btn btn-soft" onclick="rewriteAnswerWithAi()"><i class="ti ti-message-2-heart"></i> Rewrite with AI</button>
             <button class="btn btn-light" onclick="clearAiAnswer()"><i class="ti ti-backspace"></i> Clear</button>
           </div>
           <div id="scoreBox" class="output" style="margin-top:12px;display:none"></div>
           <div id="rewriteBox" class="output" style="margin-top:12px;display:none"></div>
+          <div id="assistantBox" class="output" style="margin-top:12px;display:none"></div>
           <h3 class="section-title">What sounds okay</h3>
           <div id="positives"></div>
           <h3 class="section-title">Possible safety concerns</h3>
@@ -964,6 +1155,7 @@
               </div>
             </div>
           </div>
+          <div id="notifyStatus" class="status-note" style="display:none;margin-bottom:10px"></div>
           <div id="rc">
             <div class="es"><i class="ti ti-clipboard-list"></i><p class="et">Enter patient details to find trials</p><p class="em">Fill in the shared profile and click <strong>Find matches</strong>.</p></div>
           </div>
@@ -1030,6 +1222,7 @@
 
   <script>
     var STORAGE_KEY = 'michigan_headneck_navigator_state';
+    var DEFAULT_API_BASE = 'http://localhost:8787';
     var TEMPLATE_PROMPTS = [
       'I am a patient trying to understand my treatment plan. Please give general educational information only, not a diagnosis. Using the details below, explain the usual treatment options, what can change based on stage or pathology, and list the most important questions I should ask my doctor.\n\nPatient details:\n[profile]',
       'Review the following AI answer about my head and neck cancer. Tell me what sounds too general, too confident, or incomplete. Point out anything that should be verified with my doctor, especially if it depends on diagnosis, stage, biomarkers, or treatment history.\n\nPatient details:\n[profile]\n\nAI answer:\n[paste answer]',
@@ -1043,11 +1236,53 @@
       {name:'MedlinePlus',reason:'Reliable health information from the National Library of Medicine.',tip:'Useful for symptoms, terminology, and general education.',url:'https://medlineplus.gov/headandneckcancer.html'},
       {name:'Head & Neck Cancer Alliance',reason:'Patient support and condition-specific resources.',tip:'Useful for survivorship, support, and practical preparation.',url:'https://www.headandneck.org/'}
     ];
+    var DESIGN_KEY = 'navigator_design_lab_choice';
+    var DESIGN_MODES = {
+      clinical: {
+        title: 'Head & Neck Clinical Console',
+        lead: 'A clean clinical dashboard for patient-safe AI guidance, appointment prep, and trial plus study matching. The patient profile stays prominent so each tool uses the same shared context.',
+        statLabel: 'Workspace',
+        statValue: 'Clinical Console design selected',
+        statTwoLabel: 'Flow',
+        statTwoValue: 'Profile-first dashboard'
+      },
+      journey: {
+        title: 'Head & Neck Patient Journey',
+        lead: 'A warmer step-by-step workspace for patient-safe AI guidance, doctor questions, visit notes, and trial conversations. It is designed to feel calmer while keeping the same matching engine.',
+        statLabel: 'Workspace',
+        statValue: 'Patient Journey design selected',
+        statTwoLabel: 'Flow',
+        statTwoValue: 'Guided prep from profile to visit'
+      },
+      trial: {
+        title: 'Head & Neck Trial Desk',
+        lead: 'A denser clinical workspace for patient-safe AI guidance, appointment prep, and trial plus study matching. The left profile drives the matching desk, draft prompts, visit notes, and research protocol review.',
+        statLabel: 'Workspace',
+        statValue: 'Trial Desk design selected',
+        statTwoLabel: 'Review',
+        statTwoValue: 'Recruiting trials + protocols'
+      }
+    };
     var doctorQuestions = [];
 
     function $(id){return document.getElementById(id);}
     function value(id){var el=$(id);return el?el.value:'';}
     function setValue(id,val){var el=$(id);if(el)el.value=val || '';}
+    function applyDesignTheme(mode,persist){
+      if(!DESIGN_MODES[mode]) mode = 'trial';
+      document.body.classList.remove('theme-clinical','theme-journey','theme-trial');
+      document.body.classList.add('theme-' + mode);
+      if(persist) localStorage.setItem(DESIGN_KEY, mode);
+      var config = DESIGN_MODES[mode];
+      if($('designTheme')) $('designTheme').value = mode;
+      if($('appTitle')) $('appTitle').innerText = config.title;
+      if($('appLead')) $('appLead').innerText = config.lead;
+      if($('themeStatLabel')) $('themeStatLabel').innerText = config.statLabel;
+      if($('themeStatValue')) $('themeStatValue').innerText = config.statValue;
+      if($('themeStatTwoLabel')) $('themeStatTwoLabel').innerText = config.statTwoLabel;
+      if($('themeStatTwoValue')) $('themeStatTwoValue').innerText = config.statTwoValue;
+      document.title = 'Michigan ' + config.title;
+    }
     function selectedText(id){
       var el=$(id);
       if(!el || el.selectedIndex < 0) return '';
@@ -1126,6 +1361,132 @@
     }
     function copyText(id){copyToClipboard($(id).innerText,'Copied.');}
     function copyProfileSummary(){copyToClipboard(profileSummaryText(),'Patient summary copied.');}
+    function setNotifyStatus(message,tone){
+      var box=$('notifyStatus');
+      if(!box) return;
+      box.style.display='block';
+      box.className='status-note' + (tone ? ' ' + tone : '');
+      box.innerText=message;
+    }
+    function parseMailtoDraft(href){
+      var raw=(href || '').replace(/^mailto:/i,'');
+      var parts=raw.split('?');
+      var to=decodeURIComponent(parts[0] || '');
+      var params=new URLSearchParams(parts[1] || '');
+      return {
+        to:to,
+        subject:params.get('subject') || '',
+        body:params.get('body') || ''
+      };
+    }
+    function draftTextFromMailto(href){
+      var draft=parseMailtoDraft(href);
+      return 'To: ' + draft.to + '\nSubject: ' + draft.subject + '\n\n' + draft.body;
+    }
+    function copyNotifyDraft(text){
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){
+          setNotifyStatus('Email draft copied. If your email app opens, review it before sending. If nothing opened, paste the copied draft into your email app manually.','success');
+        }).catch(function(){
+          fallbackCopy(text,'Email draft copied. If your email app did not open, paste it into your email app manually.');
+          setNotifyStatus('Email draft copied. If your email app did not open, paste it into your email app manually.','success');
+        });
+        return;
+      }
+      fallbackCopy(text,'Email draft copied. If your email app did not open, paste it into your email app manually.');
+      setNotifyStatus('Email draft copied. If your email app did not open, paste it into your email app manually.','success');
+    }
+    function handleNotifyLink(event,link){
+      if(!link || !link.href || link.href.indexOf('mailto:') !== 0) return;
+      event.preventDefault();
+      var draftText=draftTextFromMailto(link.href);
+      copyNotifyDraft(draftText);
+      setNotifyStatus('Preparing email draft. I copied the message and am trying to open your email app now.','success');
+      window.location.href=link.href;
+    }
+    function normalizeApiBase(raw){
+      return (raw || '').trim().replace(/\/+$/, '');
+    }
+    function getApiBase(){
+      return normalizeApiBase(value('apiBase')) || DEFAULT_API_BASE;
+    }
+    function setAiStatus(message, tone){
+      var box = $('aiStatus');
+      if(!box) return;
+      box.className = 'status-note' + (tone ? ' ' + tone : '');
+      box.innerText = message;
+    }
+    async function readJsonResponse(response){
+      try{
+        return await response.json();
+      }catch(e){
+        return {};
+      }
+    }
+    async function requestAi(path, payload){
+      var response = await fetch(getApiBase() + path, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload)
+      });
+      var data = await readJsonResponse(response);
+      if(!response.ok){
+        throw new Error(data.error || ('Request failed with status ' + response.status + '.'));
+      }
+      return data;
+    }
+    async function testAiConnection(){
+      setAiStatus('Checking AI server at ' + getApiBase() + ' ...');
+      try{
+        var response = await fetch(getApiBase() + '/health');
+        var data = await readJsonResponse(response);
+        if(!response.ok) throw new Error(data.error || 'Health check failed.');
+        if(!data.hasKey){
+          setAiStatus('The server is reachable, but OPENAI_API_KEY is not set yet. Add it to your .env file before asking the AI for help.', 'error');
+          return;
+        }
+        setAiStatus('Connected to the AI server. Current model: ' + (data.model || 'not reported') + '.', 'success');
+      }catch(error){
+        setAiStatus('Could not reach the AI server. Start server.mjs locally or paste your deployed backend URL here. Details: ' + error.message, 'error');
+      }
+    }
+    async function askAiForDraft(){
+      var prompt = buildPrompt();
+      setAiStatus('Asking OpenAI for a patient-safe draft...');
+      try{
+        var data = await requestAi('/api/educational-answer', {
+          prompt: prompt,
+          patientSummary: profileSummaryText(),
+          goal: value('goal').trim()
+        });
+        setValue('aiAnswer', data.text || '');
+        runChecker();
+        saveState();
+        setAiStatus('AI draft added to the checker. Review it carefully before treating it as useful.', 'success');
+      }catch(error){
+        setAiStatus('The AI draft request failed. ' + error.message, 'error');
+      }
+    }
+    async function rewriteAnswerWithAi(){
+      var answer = value('aiAnswer').trim();
+      if(!answer){
+        alert('Paste or generate an AI answer first.');
+        return;
+      }
+      setAiStatus('Asking OpenAI for a safer rewrite...');
+      $('assistantBox').style.display = 'none';
+      try{
+        var data = await requestAi('/api/review-answer', {
+          answer: answer,
+          patientSummary: profileSummaryText()
+        });
+        $('assistantBox').style.display = 'block';
+        $('assistantBox').innerText = 'AI-assisted safer rewrite\n\n' + (data.text || 'No text returned.');
+        setAiStatus('Safer rewrite ready. Please verify it with your care team before using it.', 'success');
+      }catch(error){
+        setAiStatus('The safer rewrite request failed. ' + error.message, 'error');
+      }
+    }
 
     function buildPromptFromTemplate(template){
       var profile = profileSummaryText() || 'No structured patient profile entered yet.';
@@ -1358,6 +1719,7 @@
         p5:$('p5').checked,
         p6:$('p6').checked,
         goal:value('goal'),
+        apiBase:value('apiBase'),
         promptOutput:$('promptOutput').innerText,
         aiAnswer:value('aiAnswer'),
         visitSymptoms:value('visitSymptoms'),
@@ -1399,6 +1761,7 @@
         $('p5').checked = !!state.p5;
         $('p6').checked = !!state.p6;
         setValue('goal', state.goal || '');
+        setValue('apiBase', state.apiBase || DEFAULT_API_BASE);
         $('promptOutput').innerText = state.promptOutput || 'Your prompt will appear here.';
         setValue('aiAnswer', state.aiAnswer || '');
         setValue('visitSymptoms', state.visitSymptoms || '');
@@ -1410,6 +1773,7 @@
       }catch(e){
         localStorage.removeItem(STORAGE_KEY);
       }
+      if(!value('apiBase')) setValue('apiBase', DEFAULT_API_BASE);
       onSC();
       applyFilterUI();
       updateSnapshot();
@@ -1804,6 +2168,14 @@
       },300);
     }
 
+    document.addEventListener('click',function(event){
+      var link=event.target.closest ? event.target.closest('a[href^="mailto:"]') : null;
+      if(link && (link.classList.contains('nb') || link.classList.contains('proto-link'))){
+        handleNotifyLink(event,link);
+      }
+    });
+
+    applyDesignTheme(localStorage.getItem(DESIGN_KEY) || 'trial', false);
     loadState();
     renderSources();
     renderQuestions();
